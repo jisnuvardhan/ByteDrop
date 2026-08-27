@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model UsageEvent {
+  id                   String   @id @default(cuid())
+  provider             String
+  model                String
+  timestamp            DateTime
+  inputTokens          Int?
+  outputTokens         Int?
+  requestType          String   @default("AI request")
+  energyKwh            Float?
+  energyMethod         String
+  energyMethodVersion  String
+  energySource         String
+  pue                  Float
+  pueSource            String
+  pueVersion           String
+  pueEffectiveDate     String
+  onsiteWue            Float
+  onsiteWueSource      String
+  onsiteWueVersion     String
+  onsiteWueEffectiveDate String
+  offsiteWaterIntensity Float
+  offsiteWaterSource   String
+  offsiteWaterVersion  String
+  offsiteWaterEffectiveDate String
+  locationSource       String
+  waterLiters          Float
+  waterGallons         Float
+  waterUnit            String   @default("gal")
+  waterMetric          String   @default("consumption")
+  provenance           String
+  methodology          String
+  methodologyVersion   String
+  source               String
+  confidence           String
+  limitation           String
+  embodiedWaterGallons Float?
+  createdAt            DateTime @default(now())
+}
+
